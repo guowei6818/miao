@@ -7,7 +7,7 @@
     <title>html练习</title>
 </head>
 <body>
-    <h1>Lorem</h1>
+    <h1 id="head">Lorem</h1>
     <h2>Lorem ipsum</h2>
     <h3>Lorem ipsum dolor.</h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id maxime corrupti, nulla earum possimus vitae omnis odio pariatur officia! Odit ipsa alias labore nostrum sint ex non repellendus, doloremque et.</p>
@@ -30,9 +30,11 @@
     <!--html注释这样写-->
     <p>下面是一段javascript代码，最合适用何种标签表示呢？</p>
     <pre>
+        <code>
         function a(){
             return 8;
         }
+        </code>
     </pre>
     <hr>
     <ul>
@@ -125,6 +127,56 @@
         <input type="submit" value="提交"><input type="reset" value="重置">
     </form>
     <hr>
+
+    <table border="1">
+        <caption>货品列表</caption>
+        <tr>
+            <th>编号</th>
+            <th bgcolor="red">品名</th>
+            <th>进价</th>
+            <th>出价</th>
+        </tr>
+        <tr>
+            <th>001</th>
+            <td bgcolor="red">苹果</td>
+            <td rowspan="2">5</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <th>001</th>
+            <td bgcolor="red">橘子</td>
+           
+            <td>8</td>
+        </tr>
+        <tr>
+            <th>001</th>
+            <td bgcolor="red">香蕉</td>
+            <td>5</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <th>001</th>
+            <td bgcolor="red">山竹</td>
+            <td>5</td>
+            <td>8</td>
+        </tr>
+    </table>
+    <hr>
+    <img src="https://drscdn.500px.org/photo/174778125/m%3D1170_k%3D1/2841ccf2a3720e8e794a6a6930f6ff2c" alt="" width="300" usemap="#usemap">
+    <map name="usemap"> 
+        <area shape="rect" coords="55,108,205,200" href="https://www.mi.com/" target="_blank" alt="">
+        <area shape="circle" coords="130 263 90" href="#head" alt="">
+        <area shape="poly" coords="57,82,8,265,163,397,225,256,187,83" href="#head" alt="">
+    </map>
+    <hr>
+    <a href="https://www.mi.com/" target="inFrame">点击我会在下方frame窗口打开小米商城，但为什么打不开</a><br>
+    <iframe src="https://nodejs.org/en/" name="inFrame"></iframe>
+    <div>   
+        怎样 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在这两个字之间空这么大呢？<br>
+        怎样在页面中显示下面的内容呢？<br>
+        &lt;span>&lt;/span>
+    </div>
+
     <footer id="footer"></footer>
 </body>
 </html>
