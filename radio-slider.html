@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>radio-slider</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .background{
+            width: 1213px;
+            height: 455px;
+            position: relative;
+            margin: 0 auto;
+        }
+        .slider{
+            width: 1213px;
+            height: 455px;
+        }
+        .slider input{
+            display: none;
+        }
+        .slider img{
+            position: absolute;
+            top: 0;
+            opacity: 0;
+            width: 1213px;
+            height: 455px;
+            transition: all 1s;
+        }
+        .slider input:checked + img{
+            opacity: 1;
+        }
+        .background .slider .select{
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+        }
+        .background .slider .select label{
+            float: left;
+            margin-left: 10px;
+            display: block;
+            width: 8px;
+            height: 8px;
+            border: 2px solid orange;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .background .slider input:nth-of-type(1):checked ~ .select label:nth-of-type(1),
+        .background .slider input:nth-of-type(2):checked ~ .select label:nth-of-type(2),
+        .background .slider input:nth-of-type(3):checked ~ .select label:nth-of-type(3),
+        .background .slider input:nth-of-type(4):checked ~ .select label:nth-of-type(4),
+        .background .slider input:nth-of-type(5):checked ~ .select label:nth-of-type(5){
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="slider">
+            <input type="radio" name="miphone" id="box1" checked>
+            <img src="https://i1.mifile.cn/a4/xmad_15566146349409_TPaEg.jpg" alt="">
+            <input type="radio" name="miphone" id="box2">
+            <img src="https://i1.mifile.cn/a4/xmad_15529884448188_AIXfx.jpg" alt="">
+            <input type="radio" name="miphone" id="box3">
+            <img src="https://i1.mifile.cn/a4/xmad_15579184910644_maXrj.jpg" alt="">
+            <input type="radio" name="miphone" id="box4">
+            <img src="https://i1.mifile.cn/a4/xmad_15548066625675_jhzWS.jpg" alt="">
+            <input type="radio" name="miphone" id="box5">
+            <img src="https://i1.mifile.cn/a4/xmad_15476942090876_owaIH.jpg" alt="">
+            <!--索引-->
+            <div class="select">
+                <label for="box1"></label>
+                <label for="box2"></label>
+                <label for="box3"></label>
+                <label for="box4"></label>
+                <label for="box5"></label>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

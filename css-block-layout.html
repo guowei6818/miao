@@ -33,7 +33,7 @@
         .box .content>p{
             margin: 15px 0;
         }
-        .box .content .allBox div{
+        .box .content .allBox ul li{
             width: 180px;
             height: 40px;
             box-sizing: border-box;
@@ -41,24 +41,26 @@
             background-color: pink;
             text-align: center;
             line-height: 30px;
+            list-style-type: none;
         }
-        .box .content .allBox div:hover{
+        .box .content .allBox ul li:hover{
             background-color: red;
         }
-        .box .content .allBox div:nth-child(3n + 2){
+        .box .content .allBox ul li:nth-child(3n + 2){
             margin-left: 210px;
             margin-top: -40px;
             margin-bottom: 15px;
         }
-        .box .content .allBox div:nth-child(3n + 3){
+        .box .content .allBox ul li:nth-child(3n + 3){
             margin-left: 420px;
             margin-top: -55px;
             margin-bottom: 15px;
         }
-        .box .content .link p{
+        .box .content .link ul li{
             border-bottom: 1px dotted #000;
+            list-style-type: none;
         }
-        .box .content .link p:last-child{
+        .box .content .link ul li:last-child{
             border-bottom: none;
         }
         .box .footer{
@@ -81,25 +83,30 @@
         <div class="content">
             <p>页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px</p>
             <div class="allBox">
-                <div>宽180高40(包含边框)</div>
-                <div>产品</div>
-                <div>产品</div>
-                <div>水平间隙30px</div>
-                <div>产品</div>
-                <div>产品</div>
-                <div>垂直间隙15px</div>
-                <div>产品</div>
-                <div>产品</div>
-                <div>边框宽度3px</div>
-                <div>产品</div>
-                <div>产品</div>
+                <ul>
+                    <li>宽180高40(包含边框)</li>
+                    <li>产品</li>
+                    <li>产品</li>
+                    <li>水平间隙30px</li>
+                    <li>产品</li>
+                    <li>产品</li>
+                    <li>垂直间隙15px</li>
+                    <li>产品</li>
+                    <li>产品</li>
+                    <li>边框宽度3px</li>
+                    <li>产品</li>
+                    <li>产品</li>
+                </ul>
+                
             </div>
             <div class="link">
-                <p>link</p>
-                <p>link</p>
-                <p>link</p>
-                <p>link</p>
-                <p>link</p>
+                <ul>
+                    <li>link</li>
+                    <li>link</li>
+                    <li>link</li>
+                    <li>link</li>
+                    <li>link</li>
+                </ul>
             </div>
         </div>
         <div class="footer">

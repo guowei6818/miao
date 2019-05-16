@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>twitter-heart</title>
+    <style>
+        div.box1{
+            margin: auto auto;
+            width: 100px;
+            height: 100px;
+            background: url("images/heart.png");
+            background-position: 0 0;
+        }
+        div.box1:hover{
+            transition: background-position 3s steps(28, start);
+            background-position: -2800px 0px;  
+        }
+        label{
+            border: 1px solid #000;
+            margin: 30px auto;
+            width: 100px;
+            height: 100px;
+            display: block;
+           
+        }
+        label div.box4{
+            width: 100px;
+            height: 100px;
+            background: url("images/heart.png");
+            background-position: 0 0;
+            /* transition: background-position 2s steps(28, start); */
+        }
+        input:checked + div.box4{
+            transition: background-position 3s steps(28, start);
+            background-position: -2800px 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    
+    <label for="box3">
+        <input type="checkbox" id="box3" hidden>
+        <div class="box4"></div>
+    </label>
+</body>
+</html>

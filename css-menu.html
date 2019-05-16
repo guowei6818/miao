@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css-menu</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            width: 755px;
+            height: 50px;
+            margin: 80px auto;
+            border: 1px solid #000;
+            font-size: 18px;
+        }
+        .box ul{
+            list-style-type: none;
+        }
+        .box .nav{
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .box .nav > ul > li{
+            float: left;
+            width: 150px;
+            text-align: center;
+            line-height: 50px;
+        }
+        ul ul{
+            display: none;
+        }
+        ul > li{
+            position: relative;
+            white-space: nowrap;
+        }
+        li:hover > ul{
+            display: block;
+        }
+        .mi9 ul{
+            position: absolute;
+            top: 0px;
+            left: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <nav class="nav">
+            <ul>
+                <li>手机 电话卡
+                    <ul class="phone">
+                        <li class="mi9">小米9
+                            <ul>
+                                <li>128G + 6G</li>
+                                <li>256G + 8G</li>
+                                <li>无敌至尊版</li>
+                            </ul>
+                        </li>
+                        <li>小米8</li>
+                        <li>小米7</li>
+                        <li>红米</li>
+                        <li>小米MAX</li>
+                        <li>黑鲨游戏手机</li>
+                    </ul>
+                </li>
+                <li>电视 盒子
+                    <ul class="tv">
+                        <li>米迦激光投影电视</li>
+                        <li>小米电视4A</li>
+                        <li>小米电视4C</li>
+                    </ul>
+                </li>
+                <li>笔记本 平板
+                    <ul class="book">
+                        <li>小米笔记本13</li>
+                        <li>小米笔记本14</li>
+                        <li>小米笔记本15</li>
+                        <li>小米平板</li>
+                        <li>平板配件</li>
+                    </ul>
+                </li>
+                <li>家电 插线板
+                    <ul class="household">
+                        <li>米家空调</li>
+                        <li>吸尘器</li>
+                        <li>电水壶</li>
+                        <li>电磁炉</li>
+                    </ul>
+                </li>
+                <li>出行 穿戴
+                    <ul class="trip">
+                        <li>小米手环</li>
+                        <li>VR</li>
+                        <li>平衡车</li>
+                        <li>滑板车</li>
+                        <li>智能记录仪</li>
+                        <li>充气宝</li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>
