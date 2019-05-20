@@ -16,8 +16,8 @@
         }
         header, aside, main{
             border: 1px solid #ccc;
-            vertical-align: bottom;
             font-size: 16px;
+            box-sizing: border-box;
         }
         header{
             display: inline-block;
@@ -31,15 +31,17 @@
             display: inline-block;
             width: 230px;
             max-width: 280px;
-            height: 100%;
+            height: calc(100% - 100px);
             background-color: rgb(223, 225, 227);
+            vertical-align: bottom;
         }
         main{
             display: inline-block;
             width: calc(100% - 233px);
             border-left: none;
-            height: 100%;
-            background-color: rgb(235, 235, 235)
+            height: calc(100% - 100px);
+            background-color: rgb(235, 235, 235);
+            vertical-align: bottom;
         }
     </style>
 </head>
