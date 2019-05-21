@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bootstrap-table</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        /* box1样式 */
+        div.box1 {
+            margin: 100px auto;
+            width: 760px;
+            height: 300px;
+            border: 2px solid #eee;
+            position: relative;
+            background-color: #fff;
+        }
+
+        div.box1 table {
+            padding: 40px;
+            margin: auto;
+            table-layout: fixed;
+            width: 700px;
+            height: 240px;
+            text-align: left;
+            border-collapse: collapse;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        div.box1 th,
+        div.box1 td {
+            border-top: 1px solid rgb(222, 226, 230);
+            padding-left: 15px;
+        }
+
+        div.box1 table tr th.col {
+            line-height: 60px;
+            border-bottom: 2px solid rgb(222, 226, 230);
+        }
+
+        div.box1 .table .col1 {
+            width: 100px;
+        }
+
+        /* table-dark样式 */
+        div.box1 table.table-dark {
+            background-color: rgb(52, 58, 64);
+            color: #fff;
+        }
+
+        div.box1 table.table-dark tr th,
+        div.box1 table.table-dark tbody tr td {
+            border-color: rgb(69, 77, 85);
+        }
+
+        /* thead-dark、thead-light样式 */
+        div.box1 .table thead.thead-dark {
+            background-color: rgb(52, 58, 64);
+            color: #fff;
+        }
+
+        div.box1 .table thead.thead-light {
+            background-color: rgb(233, 236, 239);
+            color: rgb(73, 80, 87);
+        }
+
+        div.box1 .table thead.thead-light th.col {
+            border-color: rgb(222, 226, 230);
+        }
+
+        /* table-striped样式 */
+        div.box1 table.table-striped tbody tr:nth-of-type(2n+1) {
+            background-color: rgb(242, 242, 242);
+        }
+
+        /* table-striped table-dark样式 */
+        div.box1 table.table-striped.table-dark tbody tr:nth-of-type(2n+1) {
+            background-color: rgb(62, 68, 74);
+        }
+
+        /* table-bordered样式 */
+        div.box1 table.table-bordered th,
+        div.box1 table.table-bordered td {
+            border: 1px solid rgb(222, 226, 230);
+        }
+
+        div.box1 table.table-bordered.table-dark th,
+        div.box1 table.table-bordered.table-dark td {
+            border-color: rgb(69, 77, 85);
+        }
+
+        /* table-borderless样式 */
+        div.box1 table.table-borderless th,
+        div.box1 table.table-borderless td,
+        div.box1 table.table-borderless .col {
+            border: none;
+        }
+
+        /* table-hover样式 */
+        div.box1 table.table-hover tbody tr:nth-of-type(n):hover {
+            background-color: rgb(236, 236, 236);
+        }
+
+        div.box1 table.table-hover.table-dark tbody tr:nth-of-type(n):hover {
+            background-color: rgb(67, 73, 78);
+        }
+
+        /* table-hover table-dark样式 */
+        div.box1 table.table-hover.table-dark .col {
+            border-color: rgb(69, 77, 85);
+        }
+
+        /* table-sm样式 */
+        div.box1 table.table-sm {
+            height: 120px;
+        }
+
+        div.box1 table.table-sm .col {
+            line-height: 30px;
+        }
+
+        div.box1 table.table-sm.table-dark .col {
+            border-color: rgb(69, 77, 85);
+        }
+
+        div.box1 table caption{
+            caption-side: bottom;
+            text-align: left;
+            color: rgb(108, 117, 125);
+        }
+
+        /* box1样式 */
+
+        /* box2样式 */
+        div.box2 {
+            margin: 100px auto;
+            width: 760px;
+            height: 580px;
+            border: 2px solid #eee;
+            position: relative;
+            background-color: #fff;
+        }
+
+        div.box2 table {
+            margin: auto;
+            table-layout: fixed;
+            width: 700px;
+            height: 550px;
+            text-align: left;
+            border-collapse: collapse;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        div.box2 table th,
+        div.box2 table td {
+            padding-left: 20px;
+            line-height: 50px;
+        }
+
+        div.box2 table thead th {
+            border-top: 1px solid rgb(222, 226, 230);
+        }
+
+        div.box2 table tr.table-active {
+            background-color: rgb(218, 218, 218);
+        }
+
+        div.box2 table tr.table-default {
+            background-color: rgb(255, 255, 255);
+        }
+
+        div.box2 table tr.table-primary {
+            background-color: rgb(184, 218, 255);
+        }
+
+        div.box2 table tr.table-secondary {
+            background-color: rgb(214, 216, 219);
+        }
+
+        div.box2 table tr.table-success {
+            background-color: rgb(195, 230, 203);
+        }
+
+        div.box2 table tr.table-danger {
+            background-color: rgb(245, 198, 203);
+        }
+
+        div.box2 table tr.table-warning {
+            background-color: rgb(255, 238, 186);
+        }
+
+        div.box2 table tr.table-info {
+            background-color: rgb(190, 229, 235);
+        }
+
+        div.box2 table tr.table-light {
+            background-color: rgb(253, 253, 254);
+        }
+
+        div.box2 table tr.table-dark {
+            background-color: rgb(198, 200, 202);
+        }
+
+        /* box2样式 */
+        /*table-responsive样式 */
+        div.table-responsive{
+            margin: 100px auto;
+            border: 2px solid #eee;
+            width: 760px;
+            height: 240px;
+            position: relative;
+            background-color: #fff;
+            overflow: auto;
+        }
+        div.table-responsive table{
+            margin: auto;
+            table-layout: fixed;
+            width: 860px;
+            height: 200px;
+            text-align: left;
+            border-collapse: collapse;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        div.table-responsive table th,
+        div.table-responsive table td {
+            padding-left: 20px;
+            line-height: 50px;
+        }
+        div.table-responsive table thead th {
+            border-bottom: 2px solid rgb(222, 226, 230);
+        }
+        div.table-responsive table tbody th, div.table-responsive table tbody td{
+            border-top: 1px solid rgb(222, 226, 230);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+        <table class="table">
+            <!-- <caption>List of users</caption> -->
+            <colgroup>
+                <col class="col1">
+                <col class="col2">
+                <col class="col3">
+                <col class="col4">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th class="col row">#</th>
+                    <th class="col">First</th>
+                    <th class="col">Last</th>
+                    <th class="col">Handle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th class="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th class="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th class="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="box2">
+        <table>
+            <thead>
+                <tr>
+                    <th class="col row">Class</th>
+                    <th class="col">Heading</th>
+                    <th class="col">Heading</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-active">
+                    <th>Active</th>
+                    <td class="table-active">cell</td>
+                    <td class="table-active">cell</td>
+                </tr>
+                <tr class="table-default">
+                    <th>Default</th>
+                    <td class="table-dark">cell</td>
+                    <td class="table-dark">cell</td>
+                </tr>
+                <tr class="table-primary">
+                    <th>Primary</th>
+                    <td class="table-primary">cell</td>
+                    <td class="table-primary">cell</td>
+                </tr>
+                <tr class="table-secondary">
+                    <th>Secondary</th>
+                    <td class="table-secondary">cell</td>
+                    <td class="table-secondary">cell</td>
+                </tr>
+                <tr class="table-success">
+                    <th>Success</th>
+                    <td class="table-success">cell</td>
+                    <td class="table-success">cell</td>
+                </tr>
+                <tr class="table-danger">
+                    <th>Danger</th>
+                    <td class="table-danger">cell</td>
+                    <td class="table-danger">cell</td>
+                </tr>
+                <tr class="table-warning">
+                    <th>Warning</th>
+                    <td class="table-warning">cell</td>
+                    <td class="table-warning">cell</td>
+                </tr>
+                <tr class="table-info">
+                    <th>Info</th>
+                    <td class="table-info">cell</td>
+                    <td class="table-info">cell</td>
+                </tr>
+                <tr class="table-light">
+                    <th>Light</th>
+                    <td class="table-active">cell</td>
+                    <td class="table-primary">cell</td>
+                </tr>
+                <tr class="table-dark">
+                    <th>Dark</th>
+                    <td class="table-light">cell</td>
+                    <td class="table-light">cell</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Heading</th>
+                    <th>Heading</th>
+                    <th>Heading</th>
+                    <th>Heading</th>
+                    <th>Heading</th>
+                    <th>Heading</th>
+                    <th>Heading</th>
+                    <th>Heading</th>
+                    <th>Heading</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>1</th>
+                    <td>cell</td>
+                    <td>cell</td>
+                    <td>cell</td>
+                    <td>cell</td>
+                    <td>cell</td>
+                    <td>cell</td>
+                    <td>cell</td>
+                    <td>cell</td>
+                    <td>cell</td>
+                </tr>
+                <tr>
+                    <th>1</th>
+                    <td>cell</td>
+                    <td>cell</td>
+                    <td>cell</td>
+                    <td>cell</td>
+                    <td>cell</td>
+                    <td>cell</td>
+                    <td>cell</td>
+                    <td>cell</td>
+                    <td>cell</td>
+                </tr>
+                <tr>
+                    <th>1</th>
+                    <td>cell</td>
+                    <td>cell</td>
+                    <td>cell</td>
+                    <td>cell</td>
+                    <td>cell</td>
+                    <td>cell</td>
+                    <td>cell</td>
+                    <td>cell</td>
+                    <td>cell</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+</body>
+
+</html>
