@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>qq-mail-float</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        html, body{
+            height: 100%;
+            width: 100%;
+        }
+        div{
+            width: 100%;
+            height: 100%;
+        }
+        header{
+            width: 100%;
+            height: 100px;
+            background-color: rgb(70, 75, 70);
+        }
+        header, aside, main{
+            float: left;
+        }
+        aside{
+            width: 200px;
+            height: calc(100% - 100px);
+            background-color: rgb(223, 225, 227);
+        }
+        main{
+            width: calc(100% - 200px);
+            height: calc(100% - 100px);
+            background-color: rgb(235, 235, 235);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <header></header>
+        <aside></aside>
+        <main></main>
+    </div>
+</body>
+</html>
