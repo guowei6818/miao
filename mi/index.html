@@ -78,7 +78,9 @@
         .xiaomi .topbar .topbar-right>a {
             width: 120px;
             height: 40px;
-            text-align: center;
+            text-align: right;
+            padding-right: 20px;
+            box-sizing: border-box;
             line-height: 40px;
             color: rgb(176, 176, 176);
             background-color: rgb(66, 66, 66);
@@ -93,8 +95,15 @@
         }
 
         .xiaomi .topbar .topbar-right>a img {
+            position: absolute;
+            top: 7px;
+            left: 15px;
             height: 25px;
             vertical-align: middle;
+        }
+
+        .xiaomi .topbar .topbar-right>a img.pic-color{
+            display: none;
         }
 
         .xiaomi .topbar .topbar-right>a .cart-menu{
@@ -105,7 +114,7 @@
             position: absolute;
             color: #000;
             top: 40px;
-            left: -196px;
+            left: -197px;
             z-index: 9;
             line-height: 97px;
             text-align: center;
@@ -117,8 +126,13 @@
             background-color: #fff;
         }
 
+        .xiaomi .topbar .topbar-right>a:hover img.pic-color{
+            display: block;
+        }
+
         .xiaomi .topbar .topbar-right>a:hover .cart-menu{
             display: block;
+            border-top: none;
         }
 
         /* 主内容区 */
@@ -1662,6 +1676,7 @@
                     </ul>
                     <a href="">
                         <img src="https://i8.mifile.cn/b2c-mimall-media/d7db56d1d850113f016c95e289e36efa.png" alt="">
+                        <img class="pic-color" src="https://i.loli.net/2019/05/30/5cefde01130ac41989.png" alt="">
                         <span>购物车</span>
                         <span>(0)</span>
                         <div class="cart-menu">
@@ -3645,7 +3660,7 @@
                     <p class="number">400-100-5678</p>
                     <p class="time">周一至周日 8:00-18:00
                         <br>（仅收市话费）</p>
-                    <a href="">联系客服</a>
+                    <a href=""><i class="fa fa-comments" aria-hidden="true"></i>联系客服</a>
                 </div>
             </div>
         </footer>
