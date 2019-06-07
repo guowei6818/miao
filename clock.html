@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>clock</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .bgc{
+            margin: 50px auto;
+            display: block;
+            width: 560px;
+            height: 560px;
+            padding: 33.6px;
+            box-sizing: border-box;
+            background-color: rgba(200, 200, 200, .4);
+            border-radius: 10px;
+        }
+        .clock{
+            width: 492.8px;
+            height: 492.8px;
+            border: 10px solid #000;
+            border-radius: 50%;
+            background: url("https://cssanimation.rocks/images/posts/clocks/ios_clock.svg") no-repeat center;
+            background-size: 88%;
+            position: relative;
+        }
+        .clock::after{
+            content: "";
+            display: block;
+            background-color: #000;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            position: absolute;
+            top: calc(50% - 9px);
+            left: calc(50% - 9px);
+        }
+        .hours-container{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            animation: rotateZ 43200s infinite linear;
+        }
+        .hours-container .hours{
+            width: 2.5%;
+            height: 20%;
+            background-color: #000;
+            position: absolute;
+            top: calc(50% - 20%);
+            left: calc(50% - 1.25%);
+        }
+        .minutes-container{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            animation: rotateZ 3600s infinite linear;
+        }
+        .minutes-container .minutes{
+            width: 2%;
+            height: 35%;
+            background-color: #000;
+            position: absolute;
+            top: calc(50% - 35%);
+            left: calc(50% - 1%);
+        }
+        .seconds-container{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            animation: rotateZ 60s infinite steps(60);
+        }
+        .seconds-container .seconds{
+            width: 1%;
+            height: 45%;
+            border-top-left-radius: 6px 18px;
+            border-top-right-radius: 6px 18px;
+            background-color: #000;
+            position: absolute;
+            top: calc(50% - 37%);
+            left: calc(50% - 0.5%);
+            transform-origin: 50% 82.2%;
+            animation: secmove 1s infinite linear;
+        }
+        @keyframes rotateZ{
+            100%{
+                transform: rotateZ(360deg);
+            }
+        }
+        @keyframes secmove{
+            0%{
+                transform: rotate(0);
+            }
+            10%{
+                transform: rotate(2deg);
+            }
+            20%{
+                transform: rotate(1deg);
+            }
+            100%{
+                transform: rotate(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bgc">
+        <article class="clock">
+            <div class="hours-container" id="hours_container">
+                <div class="hours"></div>
+            </div>
+            <div class="minutes-container" id="minutes_container">
+                <div class="minutes"></div>
+            </div>
+            <div class="seconds-container" id="seconds_container">
+                <div class="seconds"></div>
+            </div>
+        </article>
+    </div>
+</body>
+</html>

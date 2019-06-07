@@ -1,0 +1,181 @@
+[data-balloon]{
+    position: relative;
+}
+[data-balloon]::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-width: 8px;
+    border-style: solid;
+    position: absolute;
+    opacity: 0;
+    transition: all .5s;
+}
+
+[data-balloon]::after {
+    content: "";
+    color: #fff;
+    min-width: 80px;
+    padding: 0.6em 0.8em;
+    font-size: 12px;
+    display: block;
+    background-color: black;
+    border-radius: 0.3em;
+    position: absolute;
+    opacity: 0;
+    transition: all .5s;
+    pointer-events: none;
+}
+[data-balloon]:hover::before,
+[data-balloon]:hover::after{
+    opacity: 1;
+}
+
+/* data-balloon="" */
+[data-balloon]:not([data-balloon-pos])::before,
+[data-balloon]:not([data-balloon-pos])::after{
+    bottom: 100%;
+    left: 50%;
+}
+[data-balloon]:not([data-balloon-pos])::before{
+    border-color: black transparent transparent transparent;
+    transform: translateX(-50%) translateY(15px);
+}
+[data-balloon]:not([data-balloon-pos])::after{
+    content: "Whats up!";
+    transform: translateX(-50%);
+}
+[data-balloon]:not([data-balloon-pos]):hover::before{
+    transform: translateX(-50%) translateY(0);
+}
+[data-balloon]:not([data-balloon-pos]):hover::after{
+    transform: translateX(-50%) translateY(-15px);
+}
+/* data-balloon-pos="up" */
+[data-balloon-pos="up"]::before,
+[data-balloon-pos="up"]::after{
+    bottom: 100%;
+    left: 50%;
+}
+[data-balloon-pos="up"]::before{
+    border-color: black transparent transparent transparent;
+    transform: translateX(-50%) translateY(15px);
+}
+[data-balloon-pos="up"]::after{
+    content: "";
+    transform: translateX(-50%);
+}
+[data-balloon-pos="up"]:hover::before{
+    transform: translateX(-50%) translateY(0);
+}
+[data-balloon-pos="up"]:hover::after{
+    transform: translateX(-50%) translateY(-15px);
+}
+
+/* data-balloon-pos="left" */
+[data-balloon-pos="left"]::before,
+[data-balloon-pos="left"]::after{
+    right: 100%;
+    top: 50%;
+}
+[data-balloon-pos="left"]::before{
+    border-color: transparent transparent transparent black;
+    transform: translateY(-50%) translateX(15px);
+}
+[data-balloon-pos="left"]::after{
+    content: "";
+    transform: translateY(-50%);
+}
+[data-balloon-pos="left"]:hover::before{
+    transform: translateY(-50%) translateX(0px);
+}
+[data-balloon-pos="left"]:hover::after{
+    transform: translateY(-50%) translateX(-15px);
+}
+
+/* data-balloon-pos="right" */
+[data-balloon-pos="right"]::before,
+[data-balloon-pos="right"]::after{
+    left: 100%;
+    top: 50%;
+}
+[data-balloon-pos="right"]::before{
+    border-color: transparent black transparent transparent;
+    transform: translateY(-50%) translateX(-15px);
+}
+[data-balloon-pos="right"]::after{
+    content: "";
+    transform: translateY(-50%);
+}
+[data-balloon-pos="right"]:hover::before{
+    transform: translateY(-50%) translateX(0px);
+}
+[data-balloon-pos="right"]:hover::after{
+    transform: translateY(-50%) translateX(15px);
+}
+
+/* data-balloon-pos="down" */
+[data-balloon-pos="down"]::before,
+[data-balloon-pos="down"]::after{
+    top: 100%;
+    left: 50%;
+}
+[data-balloon-pos="down"]::before{
+    border-color: transparent transparent black transparent;
+    transform: translateX(-50%) translateY(-15px);
+}
+[data-balloon-pos="down"]::after{
+    content: "";
+    transform: translateX(-50%);
+}
+[data-balloon-pos="down"]:hover::before{
+    transform: translateX(-50%) translateY(0px);
+}
+[data-balloon-pos="down"]:hover::after{
+    transform: translateX(-50%) translateY(15px);
+}
+
+/* data-balloon-length="small" */
+[data-balloon-length="small"]::after{
+    content: "Hi.";
+    width: 80px;
+}
+
+/* data-balloon-length="medium" */
+[data-balloon-length="medium"]::after{
+   width: 160px;
+}
+/* data-balloon-length="large" */
+[data-balloon-length="large"]::after{
+    width: 280px;
+}
+/* data-balloon-length="xlarge" */
+[data-balloon-length="xlarge"]::after{
+    width: 380px;
+}
+/* data-balloon-length="fit" */
+[data-balloon-length="fit"]::after{
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* data-balloon="Whats up!" */
+[data-balloon="Whats up!"]::after{
+    content: "Whats up!";
+}
+
+/* data-balloon="xxxxxxxx*/
+[data-balloon="Now that's a super big text we have over here right? Lorem ipsum dolor sit I'm done."]::after{
+    content: "Now that's a super big text we have over here right? Lorem ipsum dolor sit I'm done.";
+}
+[data-balloon="What about something really big? This may surpass your window dimensions. Imagine you're on that boring class with that boring teacher and you didn't slept so well last night. Suddenly you're sleeping in class. Can you believe it?!"]::after{
+    content: "What about something really big? This may surpass your window dimensions. Imagine you're on that boring class with that boring teacher and you didn't slept so well last night. Suddenly you're sleeping in class. Can you believe it?!";
+}
+[data-balloon="What about something really big? This may surpass your window dimensions. Imagine you're on that boring class with that boring teacher and you didn't slept so well last night. Suddenly you're sleeping in class. Can you believe it?!"]::after{
+    content: "What about something really big? This may surpass your window dimensions. Imagine you're on that boring class with that boring teacher and you didn't slept so well last night. Suddenly you're sleeping in class. Can you believe it?!";
+}
+[data-balloon="What about something really big? This may surpass your window dimensions. Imagine you're on that boring class with that boring teacher and you didn't slept so well last night. Suddenly you're sleeping in class. Can you believe it?!"]::after{
+    content: "What about something really big? This may surpass your window dimensions. Imagine you're on that boring class with that boring teacher and you didn't slept so well last night. Suddenly you're sleeping in class. Can you believe it?!";
+}
+
