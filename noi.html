@@ -45,7 +45,7 @@
 <script type="xx" id="ch0103/06">
     var a = Number(prompt("请输入确诊数a："));    
     var b = Number(prompt("请输入死亡数b："));
-    var c = (a / b).toFixed(3) + "%";
+    var c = ((b / a) * 100).toFixed(3) + "%";
     console.log(c);
 </script>
 <script type="xx" id="ch0103/07">
@@ -78,12 +78,12 @@
 <script type="xx" id="ch0103/11">
     var a = Number(prompt("请输入a的值："));
     var b = Number(prompt("请输入b的值："));
-    var r = a % b;
+    var r = (a % b).toFixed(4);
     console.log(r);
 </script>
 <script type="xx" id="ch0103/12">
     var r = Number(prompt("请输入半径r的值(0<r<=100)："));
-    var V = ((4 * Math.PI * r ** 3) / 3).toFixed(2);
+    var V = ((4 * 3.14 * r ** 3) / 3).toFixed(2);
     console.log(V);
 </script>
 <script type="xx" id="ch0103/13">
@@ -193,7 +193,7 @@
 </script>
 <script type="xx" id="ch0104/06">
     var N = Number(prompt("请输入N的值："));
-     if(9 < x < 100){
+     if(9 < N < 100){
          console.log("1");
      }else{
          console.log("0");
@@ -202,11 +202,11 @@
 <script type="xx" id="ch0104/07">
     var n1 = Number(prompt("你拥有10个印有“幸运”的瓶盖数："));
     var n2 = Number(prompt("你拥有10个印有“鼓励”的瓶盖数："));
-     if(n1 > 9 && n2 > 19){
-         console.log("1");
-     }else{
-         console.log("0");
-     }
+    if((n1 > 9) || (n2 > 19)){
+        console.log("1");
+    }else{
+        console.log("0");
+    }
 </script>
 <script type="xx" id="ch0104/08">
     var N = Number(prompt("请输入N的值："));
@@ -308,7 +308,7 @@
     var n1 = Number(prompt("请输入第一条边："));
     var n2 = Number(prompt("请输入第二条边："));
     var n3 = Number(prompt("请输入第三条边："));
-    if(n1 < (n2 + n3) && n2 < (n1 + n3) && n3 < (n2 + n1)){
+    if(((n1 < (n2 + n3)) && (n2 < (n1 + n3)) && (n3 < (n2 + n1))){
         console.log("YES");
     }else{
         console.log("NO");
@@ -366,7 +366,7 @@
     }else if(b**2 > 4 * a * c){
         console.log("x1=" + x1, "x2=" + x2);
     }else{
-        console.log("x1=-" + s + "+" + x + "i", "x2=" + s + "-" + x + "i");
+        console.log("x1=" + s + "+" + x + "i;", "x2=" + s + "-" + x + "i");
     }
 </script>
 <script type="xx" id="ch0104/21">
