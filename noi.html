@@ -703,6 +703,372 @@
         console.log(sum * 1.2 + arr2[11]);
     }
 </script>
+<script type="text" id="ch0105/23">
+    var m = Number(prompt("请输入药品总数m的值："));
+    var n = Number(prompt("请输入取药人数n的值："));
+    var sum = 0, num, last = m, num1 = 0;
+    for(var i=0; i<n; i++){
+        num = Number(prompt("请输入第" + (i + 1) + "位取药数量："));
+        if(last < num){
+            num1 ++;
+            continue;
+        }else{
+            sum = sum + num;
+            last = m - sum;
+        }
+    }
+    console.log(num1);
+</script>
+<script type="text" id="ch0105/24">
+    var n = Number(prompt("请输入测量次数n："));
+    var a, b, num = 0, arr = [];
+    for(var i=0; i<n; i++){
+        a = Number(prompt("请输入第" + (i + 1) + "次测量的收缩压："));
+        b = Number(prompt("请输入第" + (i + 1) + "次测量的舒张压："));
+        if((a >= 90)&&(a<=140)&&(b>=60)&&(b<=90)){
+            num ++;
+        }else{
+            num = 0;
+        }
+        arr[i] = num;
+    }
+    var max = arr[0];
+    for(var i=1; i<arr.length; i++){
+        if(arr[i] > arr[0]){
+            max = arr[i];
+        }
+    }
+    console.log(max);
+</script>
+<script type="text" id="ch0105/25">
+    var n1, n2, n3, n4, n5, n6;
+    for(var n=49; n<728; n++){
+        n1 = parseInt(n / 49);
+        n2 = parseInt((n % 49) / 7);
+        n3 = parseInt((n % 49) % 7);
+        n4 = parseInt(n / 81);
+        n5 = parseInt((n % 81) / 9);
+        n6 = parseInt((n % 81) % 9);
+        if(n1 === n6 && n2 === n5 && n3 === n4){
+            console.log(n);
+            console.log(n1 + "" + n2 + "" + n3);
+            console.log(n4 + "" + n5 + "" + n6);
+        }
+    }
+</script>
+<script type="text" id="ch0105/26">
+    var n = Number(prompt("请输入四位数的个数n："));
+    var num = 0, n1, n2, n3, n4;
+    for(var i=0; i<n; i++){
+        a = Number(prompt("请输入第" + (i + 1) + "个四位数："));
+        n1 = parseInt(a / 1000);
+        n2 = parseInt(a % 1000 / 100);
+        n3 = parseInt(a % 1000 % 100 / 10);
+        n4 = parseInt(a % 10);
+        if((n4 - n1 - n2 - n3) > 0){
+            num ++;
+        }
+    }
+    console.log(num);
+</script>
+<script type="text" id="ch0105/27">
+    var K = Number(prompt("请输入K的值（1<=k<=15）："));
+    var sum = 0, num = 0;
+    for(var i=0; i<1835422; i++){
+        num = 1 / (i + 1);
+        sum += num;
+        if(sum > K){
+            console.log(i + 1);
+            break;
+        }
+    }
+</script>
+<script type="text" id="ch0105/28">
+    var N = prompt("请输入N的值（1<N<100000000）：");
+    var len = N.length;
+    N = Number(N);
+    var arr = [0];
+    for(var i=1; i<len+1; i++){
+        arr[i] = parseInt(((N-arr[i-1]) /10**(i-1)) % 10)
+        console.log(arr[i]);
+    }
+</script>
+<script type="text" id="ch0105/29">
+    var N = prompt("请输入N的值（-1000000000<N<1000000000）：");
+    var arr1 = N.split("");
+    var sign = arr1[0];
+    var newNum;
+    if(sign == "-"){
+        arr1.splice(0,1);
+        var arr2 = arr1.reverse();
+        for(var i=0; i<9; i++){
+            if(arr2[0] == "0"){
+                arr2.splice(0, 1);
+            }else{
+                break;
+            }
+        }
+        arr2.unshift(sign);
+        newNum = arr2.join("");
+        console.log(newNum);
+    }else{
+        var arr2 = arr1.reverse();
+        for(var i=0; i<9; i++){
+            if(arr2[0] == "0"){
+                arr2.splice(0, 1);
+            }else{
+                break;
+            }
+        }
+        newNum = arr2.join("");
+        console.log(newNum);
+    }
+</script>
+<script type="text" id="ch0105/30">
+    var m = prompt("请输入m的值(1 < m < 100000)：");
+    var k = Number(prompt("请输入k的值(1 < k < 5)："));
+    var arr = m.split("");
+    var num = 0;
+    m = Number(m);
+    for(var i=0; i<arr.length; i++){
+        if(arr[i] == 3){
+            num ++;
+        }
+    }
+    if((m % 19 == 0) && (num == k)){
+        console.log("YES");
+    }else{
+        console.log("NO");
+    }
+</script>
+<script type="text" id="ch0105/31">
+    var N = Number(prompt("请输入灯数N(N < 5000)："));
+    var M = Number(prompt("请输入人数M："));
+    //arr1为灯的编号，arr2为被操作次数
+    var arr1 = [], arr2 = [], arr3 = [];
+    for(var i=0; i<N; i++){
+        arr1[i] = i+1;
+        arr2[i] = 0;
+    }
+    for(var i=0; i<N; i++){
+        for(var j=2; j<M+1; j++){
+            if(arr1[i] % j == 0){
+                arr2[i]++;
+            }
+        }
+        if(arr2[i] % 2 == 0){
+            arr3.push(arr1[i]);
+        }
+    }
+    console.log(arr3.join(","));
+</script>
+<script type="text" id="ch0105/32">
+    var n = Number(prompt("请输入项数n："));
+    var sum = 0;
+    var p = [1], q = [2];
+    for(var i=0; i<n; i++){
+        q[i+1] = q[i] + p[i];
+        p[i+1] = q[i];
+        sum += q[i] / p[i];
+    }
+    console.log(sum.toFixed(4));
+</script>
+<script type="text" id="ch0105/33">
+    var n = Number(prompt("请输入项数n："));
+    var sum = 0;
+    var p = [1];
+    for(var i=0; i<n; i++){
+        p[i+1] = i+2;
+        sum += 1 / (((-1)**(i))*p[i]);
+    }
+    console.log(sum.toFixed(4));
+</script>
+<script type="text" id="ch0105/34">
+    var n = Number(prompt("请输入项数n："));
+    var sum = 0;
+    var p = [1];
+    for(var i=0; i<n; i++){
+        p[i] = fac(i+1);
+        sum += p[i];
+    }
+    function fac(n){
+        if(n == 0){
+            return 1;
+        }else{
+            return fac(n-1)*n
+        }
+    }
+    console.log(sum);
+</script>
+<script type="text" id="ch0105/35">
+    var n = Number(prompt("请输入项数n："));
+    var e = 1;
+    var p = [1];
+    for(var i=0; i<n; i++){
+        p[i] = fac(i+1);
+        e += (1 / p[i]);
+    }
+    function fac(n){
+        if(n == 0){
+            return 1;
+        }else{
+            return fac(n-1)*n
+        }
+    }
+    console.log(e.toFixed(10));
+</script>
+<script type="text" id="ch0105/36">
+    var x = Number(prompt("请输入浮点数x："));
+    var n = Number(prompt("请输入项数n："));
+    var sum = 1, num;
+    for(var i=0; i<n; i++){
+        num = x ** (n-i);
+        sum += num;
+    }
+    console.log(sum.toFixed(2));
+</script>
+<script type="text" id="ch0105/37">
+    var M = Number(prompt("请输入体力值M："));
+    var N = Number(prompt("请输入战斗力N："));
+    var X = Number(prompt("请输入能量元素X："));
+    var n = N;
+    while(X >= Math.ceil(M / N)){
+        X -= Math.ceil(M / N);
+        for(var j=0; j<M; j++){
+            N = N + (Math.floor(M / n) / M);
+        }
+        n = N;
+    }
+    console.log(N.toFixed(0));
+</script>
+<script type="text" id="ch0105/38">
+    var n = Number(prompt("请输入最高次幂n："));
+    var arr = [];
+    for(var i=0; i<n; i++){
+        var c = Number(prompt("请输入第" + (n-i) + "次幂的常数c："));
+        if((n-i) != 0){
+            c = c * (n - i);
+        }else{
+            c = 0;
+        }
+        arr[i] = c;
+    }
+    console.log(arr.join(" "));
+</script>
+<script type="text" id="ch0105/39">
+    var n = Number(prompt("请输入正整数n："));
+    var sum = 0;
+    for(var i=1; i<n+1; i++){
+        var n1 = (i) % 10;
+        var n2 = Math.floor((i) / 10);
+        if(i < 10){
+            if(i != 7){
+                sum += (i * i);
+            }
+        }else{
+            if((n1 == 7) || (n2 == 7) || (i % 7 == 0)){
+                continue;
+            }else{
+                sum += (i * i);
+            }
+        }
+    }
+    console.log(sum);
+</script>
+<script type="text" id="ch0105/40">
+    var n = Number(prompt("请输入正整数n："));
+    var num = 0;
+    var n1, n2, n3, n4, n5;
+    for(var i=1; i<n+1; i++){
+        n1 = (i) % 10;
+        n2 = Math.floor((i) / 10);
+        n3 = Math.floor((i) / 100);
+        n4 = Math.floor((i) / 1000);
+        n5 = Math.floor((i) / 10000);
+        if((n1 == 1) || (n2 == 1) || (n3 == 1) || (n4 == 1) || (n5 == 1)){
+            var arr = [n1, n2, n3, n4, n5];
+            for(var j=0; j<arr.length; j++){
+                if(arr[j] == 1){
+                    num ++;
+                }
+            }
+        }
+    }
+    console.log(num);
+</script>
+<script type="text" id="ch0105/41">
+    var L = Number(prompt("请输入最小范围L："));
+    var R = Number(prompt("请输入最大范围R："));
+    var len = R - L;
+    var num = 0;
+    var n1, n2, n3, n4, n5;
+    for(var i=L; i<len+3; i++){
+        n1 = (i) % 10;
+        n2 = Math.floor((i) / 10);
+        n3 = Math.floor((i) / 100);
+        n4 = Math.floor((i) / 1000);
+        n5 = Math.floor((i) / 10000);
+        if((n1 == 2) || (n2 == 2) || (n3 == 2) || (n4 == 2) || (n5 == 2)){
+            var arr = [n1, n2, n3, n4, n5];
+            for(var j=0; j<arr.length; j++){
+                if(arr[j] == 2){
+                    num ++;
+                }
+            }
+        }
+    }
+    console.log(num);
+</script>
+<script type="text" id="ch0105/42">
+    var arr = [];
+    for(var i=0; i<4; i++){
+        arr[i] = prompt("请输入第" + (i + 1) + "个参数：");
+    }
+    for(var i=0; i<arr[0]; i++){
+        for(var j=0; j<arr[1]; j++){
+            console.log(arr[2] + "");
+        }
+    }
+</script>
+<script type="text" id="ch0105/43">
+    var n = Number(prompt("请输入正整数n："));
+    for(var i=2; i<n; i++){
+       if(n % i == 0){
+           break;
+       }
+    }
+    var maxPrompt = n / i;
+    console.log(maxPrompt);
+</script>
+<script type="text" id="ch0105/44">
+    var n = Number(prompt("请输入质数的位数n："));
+    var count = 0;
+    for (var i = 2;; i++) {
+        var isPrompt = 1;
+        for (var j = i - 1; j > 1; j--) {
+            if (i % j == 0) {
+                isPrompt = 0;
+            }
+        }
+        if (isPrompt == 1) {
+            count++;
+            if (count == n) {
+                console.log(i);
+                break;
+            }
+        }
+    }
+</script>
+<script type="text" id="ch0105/45">
+    var n = Number(prompt("请输入天数n："));
+    var sum = 0;
+    for(var i=1; i<n; i++){
+        n = n - i;
+        sum += (i * i) 
+    }
+    sum = sum + n * i;
+    console.log(sum);
+</script>
 
 </body>
 </html>
