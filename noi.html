@@ -1020,15 +1020,26 @@
     console.log(num);
 </script>
 <script type="text" id="ch0105/42">
-    var arr = [];
-    for(var i=0; i<4; i++){
-        arr[i] = prompt("请输入第" + (i + 1) + "个参数：");
-    }
-    for(var i=0; i<arr[0]; i++){
-        for(var j=0; j<arr[1]; j++){
-            console.log(arr[2] + "");
+    var h = Number(prompt("请输入高度h："));
+    var w = Number(prompt("请输入宽度w："));
+    var style = prompt("请输入样式：");
+    var x = Number(prompt("请输入是否空心（1或0）："));
+    var row = "";
+    for(var i=1; i<h+1; i++){
+        for(var j=1; j<w+1; j++){
+            if(x == 1){
+                row += style;
+            }else if(x == 0){
+                if(i == 1 || i == h  || j == 1 || j == w){
+                    row += style ;
+                }else{
+                    row += " ";
+                }
+            }
         }
+        row += "\n";
     }
+    console.log(row);
 </script>
 <script type="text" id="ch0105/43">
     var n = Number(prompt("请输入正整数n："));
