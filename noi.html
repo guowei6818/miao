@@ -65,8 +65,8 @@
 <script type="xx" id="ch0103/09">
     var r = Number(prompt("请输入半径r的值："))
     var d = (2 * r).toFixed(4);
-    var c = (2 * Math.PI * r).toFixed(4);
-    var s = (Math.PI * r ** 2).toFixed(4);
+    var c = (2 * 3.14159 * r).toFixed(4);
+    var s = (3.14159 * r ** 2).toFixed(4);
     console.log(d, c, s);
 </script>
 <script type="xx" id="ch0103/10">
@@ -280,15 +280,12 @@
 <script type="xx" id="ch0104/14">
     var a = Number(prompt("请输入重量："));
     var b = prompt("是否加急？：");
-    var p;
-    if(a <= 1000 && b == "n"){
-        p = 8;
-    }else if(a <= 1000 && b == "y"){
-        p = 13;
-    }else if(a > 1000 && b == "n"){
-        p = Math.ceil((a - 1000) / 500) * 4 + 8;
-    }else if(a > 1000 && b == "y"){
-        p = Math.ceil((a - 1000) / 500) * 4 + 8 + 5;
+    var p = 8;
+    if(a > 1000){
+        p += Math.ceil((a - 1000) / 500) * 4;
+    }
+    if(b == "y"){
+        p += 5;
     }
     console.log(p);
 </script>
@@ -308,7 +305,7 @@
     var n1 = Number(prompt("请输入第一条边："));
     var n2 = Number(prompt("请输入第二条边："));
     var n3 = Number(prompt("请输入第三条边："));
-    if((n1 < (n2 + n3)) && (n2 < (n1 + n3)) && (n3 < (n2 + n1))){
+    if(n1 + n2 > n3 && n2 + n3 > n1 && n1 + n3 > n2){
         console.log("YES");
     }else{
         console.log("NO");
@@ -618,7 +615,6 @@
         arr2[i] = Number(prompt("请输入的有效病例数："));
         arr3[i] = (arr2[i] / arr1[i]) * 100;
     }
-    console.log(arr3);
     for(var j=1; j<arr1.length; j++){
         if((arr3[j] - arr3[0]) > 5){
             console.log("better");
@@ -645,16 +641,13 @@
     }
     console.log(Math.ceil(allTime));
 </script>
-<script type="text" id="ch0105/20">
+<script type="xx" id="ch0105/20">
     var h = Number(prompt("请输入初始下落高度h的值："));
-    var arr1 = [], sum = 0;
-    for(var i=0; i<10; i++){
-        arr1[i] = h;
-        sum += arr1[i] * 2;
+    var sum = h;
+    for(var i=1; i<10; i++){
         h = 0.5 * h;
-        console.log(sum);
+        sum += h * 2;
     }
-    sum -= arr1[0];
     console.log(sum.toFixed(4), h.toFixed(7));
 </script>
 <script type="text" id="ch0105/21">
@@ -745,14 +738,13 @@
     for(var n=49; n<728; n++){
         n1 = parseInt(n / 49);
         n2 = parseInt((n % 49) / 7);
-        n3 = parseInt((n % 49) % 7);
+        n3 = parseInt((n % 7);
         n4 = parseInt(n / 81);
         n5 = parseInt((n % 81) / 9);
-        n6 = parseInt((n % 81) % 9);
+        n6 = parseInt((n % 9);
         if(n1 === n6 && n2 === n5 && n3 === n4){
-            console.log(n);
-            console.log(n1 + "" + n2 + "" + n3);
-            console.log(n4 + "" + n5 + "" + n6);
+            console.log(n, n1 + "" + n2 + "" + n3, n4 + "" + n5 + "" + n6);
+            break;
         }
     }
 </script>
@@ -944,7 +936,7 @@
 <script type="text" id="ch0105/38">
     var n = Number(prompt("请输入最高次幂n："));
     var arr = [];
-    for(var i=0; i<n; i++){
+    for(var i=0; i<n+1; i++){
         var c = Number(prompt("请输入第" + (n-i) + "次幂的常数c："));
         if((n-i) != 0){
             c = c * (n - i);
@@ -953,6 +945,7 @@
         }
         arr[i] = c;
     }
+    arr.pop();
     console.log(arr.join(" "));
 </script>
 <script type="text" id="ch0105/39">
