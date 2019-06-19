@@ -1075,5 +1075,112 @@
     console.log(sum);
 </script>
 
+<script type="text" id="narcissistic">
+    var n = Number(prompt("请输入数值n："));
+    var n1 = n % 10;
+    var n2 = Math.floor(n / 10) % 10;
+    var n3 = Math.floor(n / 100) % 10;
+    if(n3*n3*n3 + n2*n2*n2 + n1*n1*n1 == n){
+        console.log("YES");
+    }else{
+        console.log("NO");
+    }
+
+</script>
+<script type="text" id="narcissistics">
+    for(var i=100; i<1000; i++){
+        var n1 = i % 10;
+        var n2 = Math.floor(i / 10) % 10;
+        var n3 = Math.floor(i / 100) % 10;
+        if(n3*n3*n3 + n2*n2*n2 + n1*n1*n1 == i){
+            console.log(i);
+        }
+    }
+</script>
+<script type="text" id="palindrom">
+    var n = prompt("请输入数值n：");
+    var arr1 = n.split("");
+    var num1 = arr1.join("");
+    var arr2 = arr1.reverse();
+    var num2 = arr2.join("");
+    if(num1 == num2){
+        console.log("YES");
+    }else{
+        console.log("NO");
+    }
+</script>
+<script type="text" id="complete-number">
+    var n = prompt("请输入数值n：");
+    var arr = [], sum = 0;
+    for(var i=1; i<n; i++){
+        if(n % i == 0){
+            arr.push(i);
+        } 
+    }
+    for(var i=0; i<arr.length; i++){
+        sum += arr[i];
+    }
+    if(sum == n){
+        console.log("yes");
+    }else{
+        console.log("no");
+    }
+</script>
+<script type="text" id="complete-numbers">
+    for(var i=1; i<1000; i++){
+        var sum = 0;
+        for(var j=1; j<i; j++){
+            if(i % j == 0){
+                sum += j; 
+            }
+        }
+        if(sum == i){
+            console.log(i);
+        }
+    }
+</script>
+<script type="text" id="prime">
+    var n = prompt("请输入数值n：");
+    var isprime = 1;
+    for(var i=2; i<n; i++){
+        if(n % i == 0){
+            isprime = 0;
+        }
+    }
+    if(isprime == 1){
+        console.log("yes");
+    }else{
+        console.log("no");
+    }
+</script>
+<script type="text" id="primes">
+    for(var i=2; i<100; i++){
+        var isprime = 1;
+        for(var j=2; j<i; j++){
+            if(i % j == 0){
+                isprime = 0;
+            }
+        }
+        if(isprime == 1){
+            console.log(i);
+        }
+    }
+</script>
+<script type="text" id="lcf&lcm">
+    var n1 = prompt("请输入数值n1：");
+    var n2 = prompt("请输入数值n2：");
+    var max, min;
+    for(var i=2; i<=n1 * n2; i++){
+        if(n1 % i == 0 && n2 % i == 0){
+            max = i;
+        }
+        if(i % n1 == 0 && i % n2 == 0){
+            min = i;
+            break;
+        }
+    }
+    console.log(max, min);
+</script>
+
 </body>
 </html>
