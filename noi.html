@@ -1033,6 +1033,49 @@
     console.log(sum);
 </script>
 
+<!-- 与7相关的数 -->
+<script type="text" id="7">
+    var n = Number(prompt("请输入数值n："));
+    var count = 0;
+    if(n % 7 == 0){
+        count ++;
+    }
+    while(n > 0){
+        var degit = n % 10;
+        if(degit == 7){
+            count ++;
+            break;
+        }
+        n = (n - degit) / 10;
+    }
+    if(count == 0){
+        console.log("NO");
+    }else{
+        console.log("YES");
+    }
+</script>
+<!-- sort -->
+<script type="text" id="sort">
+    var n1 = Number(prompt("请输入数值n1："));
+    var n2 = Number(prompt("请输入数值n2："));
+    var n3 = Number(prompt("请输入数值n3："));
+    if(n1 > n2){
+        var c = n2;
+        n2 = n1;
+        n1 = c;
+    }
+    if(n2 > n3){
+        var c = n3;
+        n3 = n2;
+        n2 = c;
+    }
+    if(n1 > n3){
+        var c = n3;
+        n3 = n1;
+        n1 = c;
+    }
+    console.log(n1, n2, n3);
+</script>
 <!-- 水仙花数 -->
 <script type="text" id="narcissistic">
     var n = Number(prompt("请输入数值n："));
@@ -1068,6 +1111,13 @@
         console.log("NO");
     }
 </script>
+<!-- weekday -->
+<script type="text" id="weekday">
+    // 2019-1-1-星期二（2）
+    var n1 = Number(prompt("请输入年份："));
+    var n2 = Number(prompt("请输入月份："));
+    
+</script>
 <!-- 完数 -->
 <script type="text" id="complete-number">
     var n = Number(prompt("请输入数值n："));
@@ -1099,13 +1149,12 @@
 <!-- 质数 -->
 <script type="text" id="prime">
     var n = prompt("请输入数值n：");
-    var isprime = 1;
-    for(var i=2; i<n; i++){
+    for(var i=2; i<=n; i++){
         if(n % i == 0){
-            isprime = 0;
+            break;
         }
     }
-    if(isprime == 1){
+    if(i == n){
         console.log("YES");
     }else{
         console.log("NO");
@@ -1124,8 +1173,13 @@
         }
     }
 </script>
+<!-- itob -->
+<script type="text" id="itob">
+    var n = prompt("请输入内容：")
+    console.log(n);
+</script>
 <!-- 最大公约数、最小公倍数 -->
-<script type="" id="lcf&lcm">
+<script type="text" id="lcf&lcm">
     var n1 = prompt("请输入数值n1：");
     var n2 = prompt("请输入数值n2：");
     var max, min;
@@ -1139,6 +1193,30 @@
         }
     }
     console.log(max, min);
+</script>
+<!-- sqrt -->
+<script type="text" id="sqrt">
+    var n = prompt("请输入数值n：");
+    for(var i=0; i*i<n; i++){
+        if(i*i == n){
+            console.log(i.toFixed(3))
+        }else{
+            var mid = i * (i + 1) / 2;
+            var min = i, max = i + 1;
+            var count = 0;
+            while(mid * mid != n && count < 100){
+                if(mid * mid > n){
+                    max = mid;
+                    mid = (max + min) / 2
+                }else{
+                    min = mid;
+                    mid = (max + min) / 2
+                }
+                count ++;
+            }
+        }
+    }
+    console.log(mid.toFixed(3));
 </script>
 
 </body>
