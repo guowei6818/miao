@@ -1114,9 +1114,11 @@
 <!-- weekday -->
 <script type="text" id="weekday">
     // 2019-1-1-星期二（2）
-    var n1 = Number(prompt("请输入年份："));
-    var n2 = Number(prompt("请输入月份："));
-    
+    var y = Number(prompt("请输入年份："));
+    var m = Number(prompt("请输入月份："));
+    nowdate = new Date(y + "/" + m + "/01");
+    weekday = nowdate.getDay();
+    console.log(weekday);
 </script>
 <!-- 完数 -->
 <script type="text" id="complete-number">
@@ -1192,7 +1194,8 @@
             break;
         }
     }
-    console.log(max, min);
+    console.log(max);
+    console.log(min);
 </script>
 <!-- sqrt -->
 <script type="text" id="sqrt">
