@@ -33,7 +33,7 @@ var guowei6818 = {
         function flatDepth(array, depth = 1){
             for(var i = 0; i < array.length; i++){
                 if(array[i] instanceof Array){
-                    if(depth > 1){
+                    if(depth > 0){
                         flatDepth(array[i], depth - 1);
                     }else{
                         result.push(array[i]);
@@ -79,7 +79,7 @@ var guowei6818 = {
             return f(...args.slice(0, n));
         }
     },
-    speard: function(){
+    spread: function(){
         return function(array){
             return f(...array); 
         }
@@ -94,5 +94,48 @@ var guowei6818 = {
             }
             
         }
+    },
+    chunk: function(array, size = 1){
+        var result = [];
+        var start = 0;
+        for(var i = 0; i < array.length; i++){
+            if((i + 1) % size == 0){
+                var temp = array.slice(start, i + 1);
+                result.push(temp);
+                start = i + 1;
+            }
+        }
+        if(array.length % size != 0){
+            result.push(array.slice(start));
+        }
+        return result;
+    },
+    difference: function(array, ...values){
+        var array2 = [];
+        for(var val of values){
+            array2 = array2.concat(val);
+        }
+        return array.filter(num => array2.indexOf(num) == -1);
+    },
+    differenceBy: function(array, ...values){
+        var iteratee;
+        var tmp = values[values.length - 1];
+        if(typeof(tmp) === "function"){
+            iteratee = values.pop();
+        }else if(typeof(tmp) === "string"){
+            values.pop();
+            iteratee = it => it[tmp];
+        }else{
+            iteratee = it => it;
+        }
+        var newArray = [].concat(...values);
+        newArray = newArray.map(x => iteratee(x));
+        let result = [];
+        array.forEach(item => {
+            if (!newArray.includes(iteratee(item))) {
+                result.push(item)
+            }
+        });
+        return result;
     }
 }
