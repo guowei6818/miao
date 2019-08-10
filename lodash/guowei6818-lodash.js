@@ -1,21 +1,51 @@
-var guowei6818 = {
-    compact: function(ary){
+/*
+ * @Description: lodash
+ * @Author: your name
+ * @Date: 2019-07-10 17:11:25
+ * @LastEditTime: 2019-08-10 16:26:57
+ * @LastEditors: Please set LastEditors
+ */
+var guowei6818 = function(){
+    /**
+     * @description: 过滤数组中为false的元素，如：null,false,"",0,NaN,undefined
+     * @param {Array} Array
+     * @return: {Array}
+     */
+    function compact(ary){
         return ary.filter(it => it);
-    },
-    fill: function(array, value, start = 0, end = array.length){
+    }
+
+    /**
+     * @description: 从开始到结束位置（不包括）填充数组
+     * @param {Array} array 
+     * @return: {Array}
+     */
+    function fill(array, value, start = 0, end = array.length){
         for(var i = start; i < end; i++){
             array[i] = value;
         }
         return array;
-    },
-    flatten: function(array){
+    }
+
+    /**
+     * @description: 展开多维数组，只展开一层
+     * @param {Array} Array 
+     * @return: Array
+     */
+    function flatten(array){
         var result = [array[0]];
         for(var i = 1; i < array.length; i++){
             result = result.concat(array[i]);
         }
         return result;
-    },
-    flattenDeep: function(array){
+    }
+    
+    /**
+     * @description: 将多维数组展开成一维数组
+     * @param {Array} Array
+     * @return: Array
+     */
+    function flattenDeep(array){
         function deep(ary){
             var result = [ary[0]];
             for(var i = 1; i < ary.length; i++){
@@ -27,8 +57,15 @@ var guowei6818 = {
             return result;
         }
         return deep(array);
-    },
-    flattenDepth: function(array, n){
+    }
+
+    /**
+     * @description: 将多维数组展开n层
+     * @param {Array} Array 
+     * @param {Number} n 
+     * @return: Array
+     */
+    function flattenDepth(array, n){
         var result = [];
         function flatDepth(array, depth = 1){
             for(var i = 0; i < array.length; i++){
@@ -46,25 +83,49 @@ var guowei6818 = {
         }
         flatDepth(array, n);
         return result
-    },
-    negate: function(f){
+    }
+
+    /**
+     * @description: 返回一个函数，对原函数进行取反
+     * @param {function} function
+     * @return: function
+     */
+    function negate(f){
         return function(){
             return !f();
         }
-    },
-    bind: function(f){
+    }
+
+    /**
+     * @description: 绑定原函数的参数值
+     * @param {function} f
+     * @return: function
+     */
+    function bind(f){
         var fixedArgs = Array.from(arguments).slice(1);
         return function(){
             var args = Array.from(arguments);
             return f.apply(null, fixedArgs.concat(args));
         }
-    },
-    flip: function(f){
+    }
+
+    /**
+     * @description: 创建一个函数，对原函数的参数进行翻转
+     * @param {function} f
+     * @return: function
+     */
+    function flip(f){
         return function(...args){
             return f(...args.reverse());
         }
-    },
-    before: function(func, n){
+    }
+
+    /**
+     * @description: 创建一个函数，将所创建的函数绑定参数，调用次数少于n次。后续调用将返回上次func调用的结果。
+     * @param {function} func
+     * @return: 
+     */
+    function before(func, n){
         var lastResult
         return function(...args){
             while(n > 0){
@@ -73,18 +134,36 @@ var guowei6818 = {
             }
             return lastResult
         }
-    },
-    ary: function(f, n = f.length){
+    }
+
+    /**
+     * @description: 创建一个函数，对接收的参数只接受前n个，忽略后面的参数
+     * @param {function} function 
+     * @return: function
+     */
+    function ary(f, n = f.length){
         return function(...args){
             return f(...args.slice(0, n));
         }
-    },
-    spread: function(){
+    }
+
+    /**
+     * @description: 创建一个函数，该函数绑定一组参数，类似于apply函数
+     * @param {} 
+     * @return: function
+     */
+    function spread(){
         return function(array){
             return f(...array); 
         }
-    },
-    memoize: function(f){
+    }
+
+    /**
+     * @description: 创建一个函数，将函数调用的结果存储起来方便下次调用
+     * @param {function} function
+     * @return: function
+     */
+    function memoize(f){
         var map = {};
         return function(args){
             if(args in map){
@@ -94,8 +173,15 @@ var guowei6818 = {
             }
             
         }
-    },
-    chunk: function(array, size = 1){
+    }
+
+    /**
+     * @description: 将数组按size的大小进行分割，剩余元素组成数组的最后一部分
+     * @param {Array} 
+     * @param {Number} 
+     * @return: Array
+     */
+    function chunk(array, size = 1){
         var result = [];
         var start = 0;
         for(var i = 0; i < array.length; i++){
@@ -109,15 +195,29 @@ var guowei6818 = {
             result.push(array.slice(start));
         }
         return result;
-    },
-    difference: function(array, ...values){
+    }
+
+    /**
+     * @description: 创建一个数组，返回第一个数组中不包含在第二个数组中的元素
+     * @param {Array} array
+     * @param {Array | value} ...values
+     * @return: Array
+     */
+    function difference(array, ...values){
         var array2 = [];
         for(var val of values){
             array2 = array2.concat(val);
         }
         return array.filter(num => array2.indexOf(num) == -1);
-    },
-    differenceBy: function(array, ...values){
+    }
+
+    /**
+     * @description: 类似difference,接受为数组的每个元素和值调用的iteratee，以生成比较它们的标准。
+     * @param {Array} array 
+     * @param {Array|values} ...values 
+     * @return: Array
+     */
+    function differenceBy(array, ...values){
         var iteratee;
         var tmp = values[values.length - 1];
         if(typeof(tmp) === "function"){
@@ -138,4 +238,124 @@ var guowei6818 = {
         });
         return result;
     }
-}
+
+    /**
+     * @description: 接收一个数组，返回数组中第n位之后的元素
+     * @param {Array} array 
+     * @param {Number} n 
+     * @return: Array
+     */
+    function drop(array, n = 1){
+        return array.slice(n > 0 ? n : 0);
+    }
+
+    /**
+     * @description: 接收一个数组，返回数组中第n位之前的元素
+     * @param {Array} array
+     * @param {Number} n
+     * @return: Array
+     */
+    function dropRight(array, n = 1){
+        if(n >= array.length){
+            return []
+        }else{
+            return array.slice(0, array.length - n);
+        }
+    }
+    
+    /**
+     * @description: 创建一个函数，该函数使用所创建函数的参数调用func。如果func是属性名，则创建的函数返回给定元素的属性值。如果func是一个数组或对象，对于包含等效源属性的元素，创建的函数返回true，否则返回false。
+     * @param {function} func 
+     * @return: function
+     */
+    function iteratee(func){
+        if(typeof(func) === "function") return func;
+        if(typeof(func) === "string") return property(func);
+        if(isPlainObject(func)) return Matches(func);
+        if(isArray(func)) return MatchesProperty(func[0],func[1]);
+    }
+
+    /**
+     * @description: 原生ES方法Object.prototype.toString，给定一个值判断数据类型
+     * @param {*} value
+     * @return: String
+     */
+    function getTag(value){
+        return Object.prototype.toString.call(value);
+    }
+
+    /**
+     * @description: 给定一个值判断是否为Object类型
+     * @param {*} value 
+     * @return: boolean
+     */
+    function isPlainObject(value){
+        if(!value || typeof(value) !== "object") return false;
+        let proto = Object.getPrototypeOf(value);
+        if(proto === null || proto === Object.prototype){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @description: 给定一个值判断是否为Array类型
+     * @param {*} value
+     * @return: boolean
+     */
+    function isArray(value){
+        return getTag(value) === "[object Array]"
+    }
+
+    /**
+     * @description: 给定一个值判断是否为object类型
+     * @param {*} value 
+     * @return: boolean
+     */
+    function isObject(value){
+        let type = typeof(value);
+        return (value !== null) && (type === "object" || type === "function")
+    }
+
+    /**
+     * @description: 创建一个函数，该函数返回给定对象路径处的值。
+     * @param {Array|string} path
+     * @return: Function
+     */
+    function property(path){
+
+    }
+
+    /**
+     * @description: 获取对象路径处的值。如果解析值未定义，则返回defaultValue。
+     * @param {type} 
+     * @return: 
+     */
+    function get(object, path, defaultValue){
+
+    }
+
+    return {
+        compact,
+        fill,
+        flatten,
+        flattenDeep,
+        negate,
+        bind,
+        flip,
+        before,
+        ary,
+        spread,
+        memoize,
+        chunk,
+        difference,
+        differenceBy,
+        drop,
+        dropRight,
+        iteratee,
+        getTag,
+        isPlainObject,
+        isArray,
+        isObject,
+    }
+}()
