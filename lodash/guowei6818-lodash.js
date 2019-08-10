@@ -2,7 +2,7 @@
  * @Description: lodash
  * @Author: your name
  * @Date: 2019-07-10 17:11:25
- * @LastEditTime: 2019-08-10 16:26:57
+ * @LastEditTime: 2019-08-10 21:02:20
  * @LastEditors: Please set LastEditors
  */
 var guowei6818 = function(){
@@ -101,11 +101,16 @@ var guowei6818 = function(){
      * @param {function} f
      * @return: function
      */
-    function bind(f){
-        var fixedArgs = Array.from(arguments).slice(1);
-        return function(){
-            var args = Array.from(arguments);
-            return f.apply(null, fixedArgs.concat(args));
+    function bind(f, thisArg, ...fixedArgs){
+        return function(...args){
+            var acturalArgs = [...fixedArgs]
+            for(var i = 0; i < acturalArgs.length; i++){
+                if(acturalArgs[i] === window){
+                    acturalArgs[i] = args.shift()
+                }
+            }
+            acturalArgs.push(...args)
+            return f.apply(thisArg, acturalArgs)
         }
     }
 
@@ -262,6 +267,36 @@ var guowei6818 = function(){
             return array.slice(0, array.length - n);
         }
     }
+
+    /**
+     * @description: 创建一个数组切片，其中不包括从末尾删除的元素。元素将被删除，直到谓词返回错误。谓词由三个参数调用:(值、索引、数组)。
+     * @param {Array} array 
+     * @param {*} predicate
+     * @return: Array
+     */
+    function dropRightWhile(array, predicate){
+        let func = iteratee(predicate);
+        let result = array.slice();
+        for(var i = array.length - 1; i >= 0; i--){
+            if(!func(array[i]), i, array){
+                break;
+            }
+            result.pop();
+        }
+        return result;
+    }
+
+    function dropWhile(array, predicate){
+        let func = iteratee(predicate);
+        let result = array.alice();
+        for(var i = 0; i < array.length; i++){
+            if(!func(array[i], i, array)){
+                break;
+            }
+            result.shift();
+        }
+        return result;
+    }
     
     /**
      * @description: 创建一个函数，该函数使用所创建函数的参数调用func。如果func是属性名，则创建的函数返回给定元素的属性值。如果func是一个数组或对象，对于包含等效源属性的元素，创建的函数返回true，否则返回false。
@@ -271,8 +306,8 @@ var guowei6818 = function(){
     function iteratee(func){
         if(typeof(func) === "function") return func;
         if(typeof(func) === "string") return property(func);
-        if(isPlainObject(func)) return Matches(func);
-        if(isArray(func)) return MatchesProperty(func[0],func[1]);
+        if(isPlainObject(func)) return matches(func);
+        if(isArray(func)) return matchesProperty(func[0],func[1]);
     }
 
     /**
@@ -323,7 +358,10 @@ var guowei6818 = function(){
      * @return: Function
      */
     function property(path){
-
+        return function(obj){
+            return get(obj, path)
+        }
+        //return bind(get, null, window, path);
     }
 
     /**
@@ -332,7 +370,56 @@ var guowei6818 = function(){
      * @return: 
      */
     function get(object, path, defaultValue){
+        if(object === undefined){
+            return defaultValue
+        }
+        return get(object[path[0]], path.slice(1));
+    }
+    function toPath(str){
+        return str.split(/\.|\[|\]./g)
+    }
 
+    /**
+     * @description: 判断一个元素是否是另一个元素的子集,创建一个函数，该函数在给定对象和源之间执行部分深度比较，如果给定对象具有等效的属性值，则返回true，否则返回false。
+     * @param {type} 
+     * @return: boolean
+     */
+    function matches(src){
+        return bind(isMatch, null, window, src);
+    }
+
+    /**
+     * @description: 创建一个函数，该函数在给定对象的路径值与srcValue之间执行局部深度比较，如果对象值相等则返回true，否则返回false。
+     * @param {type} 
+     * @return: boolean
+     */
+    function matchesProperty(path, value){
+        return function(obj){
+            return isEqual(get(obj, path), value);
+        }
+    }
+
+    /**
+     * @description: 在对象和源之间执行部分深度比较，以确定对象是否包含等效的属性值。
+     * @param {type} 
+     * @return: boolean
+     */
+    function isMatch(obj, src){
+        if(obj === src){
+            return true;
+        }
+        for(var key in src){
+            if(typeof src[key] == "object" && src[key] !== null){
+                if(!isMatch(obj[key], src[key])){
+                    return false
+                }
+            }else{
+                if(obj[key] != src[key]){
+                    return false
+                }
+            }
+        }
+        return true
     }
 
     return {
@@ -352,10 +439,17 @@ var guowei6818 = function(){
         differenceBy,
         drop,
         dropRight,
+        dropRightWhile,
+        dropWhile,
         iteratee,
         getTag,
         isPlainObject,
         isArray,
         isObject,
+        property,
+        get,
+        //matches,
+        //MatchesProperty,
+        isMatch,
     }
 }()
