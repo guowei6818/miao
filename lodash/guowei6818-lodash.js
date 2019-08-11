@@ -2,7 +2,7 @@
  * @Description: lodash
  * @Author: your name
  * @Date: 2019-07-10 17:11:25
- * @LastEditTime: 2019-08-11 11:05:12
+ * @LastEditTime: 2019-08-11 16:32:33
  * @LastEditors: Please set LastEditors
  */
 var guowei6818 = function(){
@@ -315,10 +315,10 @@ var guowei6818 = function(){
      * @return: function
      */
     function iteratee(func){
-        if(typeof(func) === "function") return func;
         if(typeof(func) === "string") return property(func);
         if(isPlainObject(func)) return matches(func);
         if(isArray(func)) return matchesProperty(func[0],func[1]);
+        return func;
     }
 
     /**
@@ -384,10 +384,13 @@ var guowei6818 = function(){
         if(isString(path)){
             path = toPath(path);
         }
-        if(object === undefined){
-            return defaultValue
+        for(let i = 0; i < path.length; i++){
+            if(object == undefined){
+                return defaultValue
+            }
+            obj = obj[path[i]];
         }
-        return get(object[path[0]], path.slice(1), defaultValue);
+        return object;
     }
     function toPath(str){
         return str.split(/\.|\[|\]/g)
@@ -399,7 +402,9 @@ var guowei6818 = function(){
      * @return: boolean
      */
     function matches(src){
-        return bind(isMatch, null, window, src);
+        return function(obj){
+            return isMatch(obj, src);
+        }
     }
 
     /**
@@ -444,8 +449,8 @@ var guowei6818 = function(){
         // if(value === other) return true;
         if(value !== value && other !== other) return true;
         if(isObject(value) && isObject(other)){
-            const valueKeys = Object.key(value);
-            const otherKeys = Object.key(other);
+            const valueKeys = Object.keys(value);
+            const otherKeys = Object.keys(other);
             if(valueKeys.length !== otherKeys.length) return false;
             for(let item in value){
                 if(isEqual(value[item],other[item])){
