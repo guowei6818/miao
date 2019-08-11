@@ -2,7 +2,7 @@
  * @Description: lodash
  * @Author: your name
  * @Date: 2019-07-10 17:11:25
- * @LastEditTime: 2019-08-10 21:02:20
+ * @LastEditTime: 2019-08-11 11:05:12
  * @LastEditors: Please set LastEditors
  */
 var guowei6818 = function(){
@@ -244,6 +244,17 @@ var guowei6818 = function(){
         return result;
     }
 
+    function differenceWith(array, values, comparator){
+        if(values.length === 0) return array;
+        let result = [];
+        comparator = iteratee(comparator);
+        for(var i = 0; i < array.length; i++){
+            let char = array[i];
+            if(!values.every(item => comparator(char, item))) result.push(char);
+        }
+        return result;
+    }
+
     /**
      * @description: 接收一个数组，返回数组中第n位之后的元素
      * @param {Array} array 
@@ -370,13 +381,16 @@ var guowei6818 = function(){
      * @return: 
      */
     function get(object, path, defaultValue){
+        if(isString(path)){
+            path = toPath(path);
+        }
         if(object === undefined){
             return defaultValue
         }
-        return get(object[path[0]], path.slice(1));
+        return get(object[path[0]], path.slice(1), defaultValue);
     }
     function toPath(str){
-        return str.split(/\.|\[|\]./g)
+        return str.split(/\.|\[|\]/g)
     }
 
     /**
@@ -422,11 +436,35 @@ var guowei6818 = function(){
         return true
     }
 
+    function isString(value){
+        return getTag(value) === "[object String]"
+    }
+
+    function isEqual(value, other){
+        // if(value === other) return true;
+        if(value !== value && other !== other) return true;
+        if(isObject(value) && isObject(other)){
+            const valueKeys = Object.key(value);
+            const otherKeys = Object.key(other);
+            if(valueKeys.length !== otherKeys.length) return false;
+            for(let item in value){
+                if(isEqual(value[item],other[item])){
+                    continue;
+                }else{
+                    return false;
+                }
+            }
+            return true
+        }
+        return value === other;
+    }
+
     return {
         compact,
         fill,
         flatten,
         flattenDeep,
+        flattenDepth,
         negate,
         bind,
         flip,
@@ -437,6 +475,7 @@ var guowei6818 = function(){
         chunk,
         difference,
         differenceBy,
+        differenceWith,
         drop,
         dropRight,
         dropRightWhile,
@@ -451,5 +490,7 @@ var guowei6818 = function(){
         //matches,
         //MatchesProperty,
         isMatch,
+        isString,
+        isEqual,
     }
 }()
