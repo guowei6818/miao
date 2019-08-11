@@ -2,7 +2,7 @@
  * @Description: lodash
  * @Author: your name
  * @Date: 2019-07-10 17:11:25
- * @LastEditTime: 2019-08-11 16:38:00
+ * @LastEditTime: 2019-08-11 17:04:42
  * @LastEditors: Please set LastEditors
  */
 var guowei6818 = function(){
@@ -393,7 +393,7 @@ var guowei6818 = function(){
         return object;
     }
     function toPath(str){
-        return str.split(/\.|\[|\]/g)
+        return str.split(/\.|\[|\]./g)
     }
 
     /**
