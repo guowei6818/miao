@@ -2,7 +2,7 @@
  * @Description: lodash
  * @Author: your name
  * @Date: 2019-07-10 17:11:25
- * @LastEditTime: 2019-08-11 17:04:42
+ * @LastEditTime: 2019-08-11 17:16:50
  * @LastEditors: Please set LastEditors
  */
 var guowei6818 = function(){
@@ -289,7 +289,7 @@ var guowei6818 = function(){
         let func = iteratee(predicate);
         let result = array.slice();
         for(var i = array.length - 1; i >= 0; i--){
-            if(!func(array[i]), i, array){
+            if(!func(array[i], i, array)){
                 break;
             }
             result.pop();
@@ -299,7 +299,7 @@ var guowei6818 = function(){
 
     function dropWhile(array, predicate){
         let func = iteratee(predicate);
-        let result = array.alice();
+        let result = array.slice();
         for(var i = 0; i < array.length; i++){
             if(!func(array[i], i, array)){
                 break;
