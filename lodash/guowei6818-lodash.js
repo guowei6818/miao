@@ -2,7 +2,7 @@
  * @Description: lodash
  * @Author: your name
  * @Date: 2019-07-10 17:11:25
- * @LastEditTime: 2019-08-11 16:32:33
+ * @LastEditTime: 2019-08-11 16:38:00
  * @LastEditors: Please set LastEditors
  */
 var guowei6818 = function(){
@@ -388,7 +388,7 @@ var guowei6818 = function(){
             if(object == undefined){
                 return defaultValue
             }
-            obj = obj[path[i]];
+            object = object[path[i]];
         }
         return object;
     }
