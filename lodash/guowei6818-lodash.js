@@ -2,7 +2,7 @@
  * @Description: lodash
  * @Author: your name
  * @Date: 2019-07-10 17:11:25
- * @LastEditTime: 2019-08-11 17:16:50
+ * @LastEditTime: 2019-08-11 20:09:31
  * @LastEditors: Please set LastEditors
  */
 var guowei6818 = function(){
@@ -154,10 +154,10 @@ var guowei6818 = function(){
 
     /**
      * @description: 创建一个函数，该函数绑定一组参数，类似于apply函数
-     * @param {} 
+     * @param {function} f 
      * @return: function
      */
-    function spread(){
+    function spread(f){
         return function(array){
             return f(...array); 
         }
@@ -441,10 +441,21 @@ var guowei6818 = function(){
         return true
     }
 
+    /**
+     * @description: 判断一个值是否为String类型
+     * @param {*} value 
+     * @return: boolean
+     */
     function isString(value){
         return getTag(value) === "[object String]"
     }
 
+    /**
+     * @description: 对两个元素进行深度比较判断是否相等
+     * @param {*} value 
+     * @param {*} other 
+     * @return: boolean
+     */
     function isEqual(value, other){
         // if(value === other) return true;
         if(value !== value && other !== other) return true;
@@ -462,6 +473,66 @@ var guowei6818 = function(){
             return true
         }
         return value === other;
+    }
+
+    /**
+     * @description: 类似于find，它返回满足条件的第一个元素的索引，而不是元素本身。
+     * @param {Array} array
+     * @param {*} predicate
+     * @param {Number} fromIndex
+     * @return: Number
+     */
+    function findIndex(array, predicate, fromIndex = 0){
+        let len = array == null ? 0 : array.length;
+        if(!len) return -1
+        let test = iteratee(predicate);
+        for(var i = fromIndex; i < len; i++){
+            if(test(array[i], i, array)){
+                return i
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * @description: 类似findIndex，从后往前查找，返回满足条件的第一个元素的索引，而不是元素本身。
+     * @param {Array} array
+     * @param {*} predicate
+     * @param {Number} fromIndex
+     * @return: Number
+     */
+    function findLastIndex(array, predicate, fromIndex = array.length - 1){
+        let len = array == null ? 0 : array.length;
+        if(!len) return -1
+        let test = iteratee(predicate);
+        for(var i = fromIndex; i >= 0; i--){
+            if(test(array[i], i, array)){
+                return i
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * @description: 将由键值对组成的数组转换成由键值对组成的新对象
+     * @param {Array} pairs  
+     * @return: Object
+     */
+    function fromPairs(pairs){
+        let result = {};
+        for(var i = 0; i < pairs.length; i++){
+            result[pairs[i][0]] = pairs[i][1];
+        }
+        return result;
+    }
+
+    /**
+     * @description: 获取数组元素的第一个元素
+     * @param {Array} array
+     * @return: *
+     */
+    function head(array){
+        return array.length > 0 ? array[0] : undefined;
     }
 
     return {
@@ -497,5 +568,8 @@ var guowei6818 = function(){
         isMatch,
         isString,
         isEqual,
+        findIndex,
+        findLastIndex,
+        fromPairs,
     }
 }()
