@@ -2,7 +2,7 @@
  * @Description: lodash
  * @Author: your name
  * @Date: 2019-07-10 17:11:25
- * @LastEditTime: 2019-08-11 20:09:31
+ * @LastEditTime: 2019-08-12 09:18:58
  * @LastEditors: Please set LastEditors
  */
 var guowei6818 = function(){
@@ -315,7 +315,7 @@ var guowei6818 = function(){
      * @return: function
      */
     function iteratee(func){
-        if(typeof(func) === "string") return property(func);
+        if(isString(func)) return property(func);
         if(isPlainObject(func)) return matches(func);
         if(isArray(func)) return matchesProperty(func[0],func[1]);
         return func;
@@ -535,6 +535,70 @@ var guowei6818 = function(){
         return array.length > 0 ? array[0] : undefined;
     }
 
+    /**
+     * @description: 从给定的索引值开始查找数组中给定值的索引
+     * @param {Array} array 
+     * @param {*} value 
+     * @param {Number} fromIndex 
+     * @return: Number
+     */
+    function indexOf(array, value, fromIndex = 0){
+        if(fromIndex < 0){
+            fromIndex = array.length + fromIndex;
+        }
+        for(let i = fromIndex; i < array.length; i++){
+            if(array[i] === value){
+                return i
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * @description: 获取数组中出最后一个元素外的所有元素并返回
+     * @param {Array} array 
+     * @return: array
+     */
+    function initial(array){
+        return array.length > 0 ? array.slice(0, -1) : [];
+    }
+
+    /**
+     * @description: 给定若干个数组返回其中所有数组都包含在内的值，值的顺序由第一个数组决定
+     * @param {Array} arrays 
+     * @return: array
+     */
+    function intersection(...args){
+        args = flatten(args);
+        const arr = args.shift()
+        return arr.filter(item => args.includes(item));
+    }
+
+    /**
+     * @description: 给定一个数组和一个值，从特定的索引开始查找该值是否在数组中
+     * @param {Array} array 
+     * @return: boolean
+     */
+    function includes(array, value, fromIndex = 0){
+        for(let i = fromIndex; i < array.length; i++){
+            if(array[i] === value){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function filter(array, predicate){
+        let result = [];
+        predicate = iteratee(predicate);
+        for(let i = 0; i < array.length; i++){
+            if(predicate(array[i], i, array)){
+                result.push(array[i]);
+            }
+        }
+        return result;
+    }
+
     return {
         compact,
         fill,
@@ -571,5 +635,11 @@ var guowei6818 = function(){
         findIndex,
         findLastIndex,
         fromPairs,
+        head,
+        indexOf,
+        initial,
+        intersection,
+        includes,
+        filter,
     }
 }()
