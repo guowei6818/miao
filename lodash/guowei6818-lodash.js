@@ -2,7 +2,7 @@
  * @Description: lodash
  * @Author: your name
  * @Date: 2019-07-10 17:11:25
- * @LastEditTime: 2019-08-12 09:18:58
+ * @LastEditTime: 2019-08-24 17:22:26
  * @LastEditors: Please set LastEditors
  */
 var guowei6818 = function(){
@@ -549,6 +549,8 @@ var guowei6818 = function(){
         for(let i = fromIndex; i < array.length; i++){
             if(array[i] === value){
                 return i
+            }else if(array[i] !== array[i] && value !== value){
+                return i;
             }
         }
         return -1;
@@ -574,16 +576,247 @@ var guowei6818 = function(){
         return arr.filter(item => args.includes(item));
     }
 
+    function intersectionBy(predicate, ...args){
+        args = flatten(args);
+        const arr = args.shift();
+        predicate = iteratee(predicate);
+        let res = [];
+        for(let i = 0; i < arr.length; i++){
+            for(let j = 0; j < args.length; j++){
+                if(predicate(arr[i]) === predicate(args[j])){
+                    res.push(arr[i]);
+                    break;
+                }
+            }
+        }
+        return res;
+    }
+
+    function intersectionWith(predicate, ...args){
+        args = flatten(args);
+        const arr = args.shift();
+        let res = [];
+        for(let i = 0; i < arr.length; i++){
+            for(let j = 0; j < args.length; j++){
+                if(predicate(arr[i]) === predicate(args[j])){
+                    res.push(arr[i]);
+                    break;
+                }
+            }
+        }
+        return res;
+    }
+
+    /**
+     * @description: 将数组中的元素转换成由分隔符拼接的字符串
+     * @param {array} array
+     * @param {string} separator
+     * @return: string
+     */
+    function join(array, separator=','){
+        let res = "";
+        for(let i = 0; i < array.length; i++){
+            if(i == array.length - 1){
+                res += array[i];
+            }else{
+                res += array[i] + separator;
+            }
+        }
+        return res;
+    }
+
+    /**
+     * @description: 返回数组的最后一项
+     * @param {array} array
+     * @return: *
+     */
+    function last(array){
+        return array[length - 1];
+    }
+
+    /**
+     * @description: 倒序获取数组中值为value的元素的索引
+     * @param {Array} array
+     * @param {*} value
+     * @param {Number} fromIndex
+     * @return: Number
+     */
+    function lastIndexOf(array, value, fromIndex = array.length - 1){
+        if(fromIndex > array.length - 1){
+            fromIndex -= array.length; 
+        }
+        for(let i = fromIndex; i >= 0; i--){
+            if(array[i] === value){
+                return i;
+            }else if(array[i] !== array[i] && value !== value){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * @description: 获取数组中第n个数值，若n小于零返回从末尾开始第n个数值
+     * @param {array} array 
+     * @param {Number} n 
+     * @return: number
+     */
+    function nth(array, n = 0){
+        if(n >= 0){
+            return array[n];
+        }else{
+            return array[array.length + n];
+        }
+    }
+
+    /**
+     * @description: 返回数组中不包含values中的值的元素
+     * @param {array} array
+     * @return: array
+     */
+    function pull(array, ...values){
+        let res = [];
+        for(let i = 0; i < array.length; i++){
+            if(values.indexOf(array[i]) == -1){
+                res.push(array[i]);
+            }
+        }
+        return res;
+    }
+
+    /**
+     * @description: 返回数组中不包含在数组values中值的元素
+     * @param {array} array 
+     * @param {array} values 
+     * @return: 
+     */
+    function pullAll(array, values){
+        let res = [];
+        for(let i = 0; i < array.length; i++){
+            if(values.indexOf(array[i]) == -1){
+                res.push(array[i]);
+            }
+        }
+        return res;
+    }
+
+    /**
+     * @description: 传入两个数组，和比较条件，返回不满足条件的第一个数组中不包含在第二个数组中的元素
+     * @param {array} array 
+     * @param {Array} values 
+     * @param {*} predicate 
+     * @return: 
+     */
+    function pullAllBy(array, values, predicate){
+        let res = [];
+        predicate = iteratee(predicate);
+        for(let i = 0; i < array.length; i++){
+            for(let j = 0; j < values.length; j++){
+                if(predicate(array[i]) === predicate(values[j])){
+                    res.push(array[i])
+                    break;
+                }
+            }
+        }
+        return pullAll(array, res);
+    }
+
+    /**
+     * @description: 
+     * @param {type} 
+     * @return: 
+     */
+    function pullAllWith(array, values, comparator){
+        let res = [];
+        for(let i = 0; i < array.length; i++){
+            for(let j = 0; j < values.length; j++){
+                if(comparator(array[i], values[j])){
+                    res.push(array[i])
+                    break;
+                }
+            }
+        }
+        return pullAll(array, res);
+    }
+
+    /**
+     * @description: 传入一个数组，将数组反转
+     * @param {Array} array 
+     * @return: array
+     */
+    function reverse(array){
+        var res = [];
+        for(var i = array.length - 1; i >= 0; i--){
+            res.push(array[i]);
+        }
+        return res;
+    }
+
+    /**
+     * @description: 使用二分法查找来确定插入值的索引，使数组在插入值后依然有序
+     * @param {array} array
+     * @param {Number} value
+     * @return: array
+     */
+    function sortedIndex(array, value){
+        let left = 0;
+        let right = array.length - 1;
+        let mid;
+        while(left < right){
+            mid = Math.floor((right - left) / 2);
+            if(array[left] > value){
+                return left;
+            }else if(array[right] < value){
+                return right + 1;
+            }else if(array[mid] < value){
+                if(array[mid + 1] > value){
+                    return mid + 1;
+                }else{
+                    left = mid + 1;
+                }
+            }else if(array[mid] >= value){
+                if(array[mid - 1] < value){
+                    return mid;
+                }else{
+                    right = mid - 1;
+                }
+            }
+        }
+        return mid + 1;
+    }
+
+    function isNaN(val){
+       return isNumber(val) && val != +val;
+    }
+
+    function isNumber(val){
+        return (typeof(val) === "number") || (getTag(val) === "[object Null]")
+    }
+
+    function SameValueZero(a, b){
+        if(isNaN(a) && isNaN(b)){
+            return true;
+        }
+        return a === b
+    }
+
     /**
      * @description: 给定一个数组和一个值，从特定的索引开始查找该值是否在数组中
-     * @param {Array} array 
+     * @param {*} colection 
      * @return: boolean
      */
-    function includes(array, value, fromIndex = 0){
-        for(let i = fromIndex; i < array.length; i++){
-            if(array[i] === value){
-                return true;
+    function includes(colections, value, fromIndex = 0){
+        if(typeof(colections) === "string"){
+            return colections.includes(value, fromIndex);
+        }
+        for(var val of Object.values(colections)){
+            var idx = 0;
+            if(idx >= fromIndex){
+                if(val === value){
+                    return true;
+                }
             }
+            idx++;
         }
         return false;
     }
@@ -639,6 +872,21 @@ var guowei6818 = function(){
         indexOf,
         initial,
         intersection,
+        intersectionBy,
+        intersectionWith,
+        join,
+        last,
+        lastIndexOf,
+        nth,
+        pull,
+        pullAll,
+        pullAllBy,
+        pullAllWith,
+        reverse,
+        sortedIndex,
+        isNumber,
+        isNaN,
+        // SameValueZero,
         includes,
         filter,
     }
