@@ -2,7 +2,7 @@
  * @Description: lodash
  * @Author: your name
  * @Date: 2019-07-10 17:11:25
- * @LastEditTime: 2019-08-24 17:22:26
+ * @LastEditTime: 2019-08-24 19:03:42
  * @LastEditors: Please set LastEditors
  */
 var guowei6818 = function(){
@@ -576,9 +576,10 @@ var guowei6818 = function(){
         return arr.filter(item => args.includes(item));
     }
 
-    function intersectionBy(predicate, ...args){
+    function intersectionBy(...args){
         args = flatten(args);
         const arr = args.shift();
+        const predicate = args.pop();
         predicate = iteratee(predicate);
         let res = [];
         for(let i = 0; i < arr.length; i++){
@@ -592,9 +593,10 @@ var guowei6818 = function(){
         return res;
     }
 
-    function intersectionWith(predicate, ...args){
+    function intersectionWith(...args){
         args = flatten(args);
         const arr = args.shift();
+        const predicate = args.pop();
         let res = [];
         for(let i = 0; i < arr.length; i++){
             for(let j = 0; j < args.length; j++){
@@ -619,7 +621,7 @@ var guowei6818 = function(){
             if(i == array.length - 1){
                 res += array[i];
             }else{
-                res += array[i] + separator;
+                res += array[i].toString() + separator.toString();
             }
         }
         return res;
@@ -631,7 +633,7 @@ var guowei6818 = function(){
      * @return: *
      */
     function last(array){
-        return array[length - 1];
+        return array[array.length - 1];
     }
 
     /**
@@ -786,7 +788,7 @@ var guowei6818 = function(){
     }
 
     function isNaN(val){
-       return isNumber(val) && val != +val;
+       return isNumber(val) && val !== +val;
     }
 
     function isNumber(val){
